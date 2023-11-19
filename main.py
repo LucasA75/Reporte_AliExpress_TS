@@ -6,6 +6,8 @@
 
 import pandas as pd
 
+
+
 datos = [{'Nombre':'Bulbasaur',
          'Cantidad': 2,
          'Precio': 4000},
@@ -13,11 +15,20 @@ datos = [{'Nombre':'Bulbasaur',
          'Cantidad': 1,
          'Precio': 9000}]
 
+data2 = "./ExportData2.csv"
 df = pd.DataFrame(datos)
+
+df2 = pd.read_csv(data2,sep=',')
+
+print(df2.columns)
+columnaPrecioCantidad = df2['Precio - Cantidad']
+print(columnaPrecioCantidad)
+for fila in columnaPrecioCantidad.values:
+    print(fila)
 
 
 archivo_excel = 'EjemploExportacion.xlsx'
 
-df.to_excel(archivo_excel, index=False)
+df2.to_excel(archivo_excel, index=False)
 
 print(f'Se ha exportado el DataFrame a {archivo_excel}')
