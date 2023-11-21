@@ -1,5 +1,3 @@
-console.log("Ingrese GENTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-
 const elementoInput: HTMLInputElement | null = document.querySelector("#APjFqb");
 
 if (elementoInput) {
