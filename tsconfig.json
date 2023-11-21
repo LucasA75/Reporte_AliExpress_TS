@@ -1,6 +1,6 @@
 {
-  "compilerOptions": {
-    "target": "ES6"
-  },
-    "include": ["./*.ts"]
-  }
+    "compilerOptions": {
+        "target": "ES6",
+        "outDir": "./dist"
+    }
+}

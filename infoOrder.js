@@ -1,8 +1,9 @@
-
-console.log("Holasasdjasjd")
-var elementoInput = document.querySelector("#APjFqb");
+// Contiene todos los nodos de item-order de una pagina
+var elementoInput = document.querySelector(".comet-checkbox-group");
 if (elementoInput) {
-    elementoInput.value = "Aliexpress";
+    console.log(elementoInput.children);
+    var items = elementoInput.children;
+    Array.from(items).forEach(function (elements) { return console.log(elements); });
 }
 else {
     console.error("Elemento no encontrado");
