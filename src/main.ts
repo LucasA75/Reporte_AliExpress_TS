@@ -1,7 +1,7 @@
 const btn = document.getElementById("btn_extraer");
-btn!.addEventListener("click", miFuncion);
+btn!.addEventListener("click", extractBtn);
 
-function miFuncion() {
+function extractBtn() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     const adress = tabs[0].url;
 

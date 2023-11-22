@@ -1,22 +1,31 @@
 {
-    "manifest_version": 3,
-    "name": "Aliexpress order to Excel",
-    "description": "get your lastest order's to a excel",
-    "version": "1",
-    "icons": {
-      "128": "./assets/icon_128.png"
-    },
-    "permissions": [
-      "storage",
-      "activeTab",
-      "scripting",
-      "tabs"
-    ],
-    "action":{
-        "default_popup": "index.html"
+  "manifest_version": 3,
+  "name": "Aliexpress order to Excel",
+  "description": "Get your latest orders to an Excel sheet",
+  "version": "1",
+  "icons": {
+    "128": "./assets/icon_128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["infoOrder.js"],
+      "run_at": "document_idle"
     }
-    ,
-    "host_permissions": [
-      "https://www.google.com/*"
-    ]
-  }
+  ],
+  "module": {
+    "type": "module"
+  },
+  "host_permissions": [
+    "https://www.google.com/*"
+  ]
+}
