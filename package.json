@@ -2,18 +2,16 @@
   "name": "reporte_aliexpress_python",
   "version": "1.0.0",
   "description": "",
-  "main": "background.js",
+  "main": "./dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc main.ts infoOrder.ts",
-    "start": "node main.js"
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/main.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "typescript": "^5.2.2"
-  },
   "devDependencies": {
-    "@types/chrome": "^0.0.251"
+    "@types/chrome": "^0.0.251",
+    "typescript": "^5.3.2"
   }
 }

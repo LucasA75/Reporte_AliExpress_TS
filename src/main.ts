@@ -12,7 +12,7 @@ function miFuncion() {
     }
     else{
         chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
+            target: { tabId: tabs[0].id! },
             files: ["./infoOrder.js"]
         }).then(()=>console.log("funciono GENTEEEEE"))
         .catch(function (err) { return console.log(err); });
