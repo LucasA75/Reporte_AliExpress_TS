@@ -1,8 +1,6 @@
 //import { exportarExcel } from "./toExcel";
-
-// Contiene todos los nodos de item-order de una pagina
 const elementoInput: HTMLInputElement | null = document.querySelector(".comet-checkbox-group");
-
+  
 interface Pedidos {
   fecha?:    string | null;
   estado?:   string | null;
@@ -12,7 +10,10 @@ interface Pedidos {
   url?:     string | null;
 }
 
-let object: Array<Pedidos> = []
+
+async function getOrdersAli() {
+console.log("Holis")
+const object: Array<Pedidos> = []
 if (elementoInput) {
   console.log(elementoInput.children)
   const items = elementoInput.children
@@ -26,14 +27,17 @@ if (elementoInput) {
         "cantidad": element.querySelector("div.order-item-content-body > div > div.order-item-content-info-number > span")?.textContent,
         "url":element.querySelector("#root > div.order-wrap > div.order-main > div.order-content > div > div:nth-child(1) > div.order-item-store > span > a")?.getAttribute("href"),
       })
-    }
-    )
-    console.log(object)
-    //exportarExcel(object)
-
-  } catch (error) {
-    console.log(error)
   }
+  )
+  return new Promise((resolve, reject) => {
+    resolve(object)
+   })
+  //exportarExcel(object)
+  
+} catch (error) {
+  console.log(error)
+}
 } else {
-  console.error("Elemento no encontrado");
+console.error("Elemento no encontrado");
+}
 }
