@@ -15,9 +15,11 @@ export const getInfoAli = ()=> {
             "precio": element.querySelector("div.order-item-content-body > div > div.order-item-content-info-number > div")?.textContent,
             "cantidad": element.querySelector("div.order-item-content-body > div > div.order-item-content-info-number > span")?.textContent,
             "url": element.querySelector(" div.order-item-store > span > a")?.getAttribute("href"),
+            "urlImagen": element.querySelector("div.order-item-content > div.order-item-content-body > a > div")?.getAttribute("style")
           })
         }
         )
+        console.log(object)
         return new Promise((resolve) => {
           resolve(object)
         })
