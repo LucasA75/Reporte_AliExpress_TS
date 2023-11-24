@@ -1,6 +1,6 @@
-
 import { Workbook } from 'exceljs';
 import '../styles/popup.scss';
+import { Pedidos } from './Interface/Pedidos';
 
 
 function getInfoAli() {
@@ -66,26 +66,18 @@ document.getElementById('go-to-options').addEventListener('click', () => {
 function exportarExcel(resultado: chrome.scripting.InjectionResult<unknown>[]) {
   const workbook = new Workbook();
   const worksheet = workbook.addWorksheet('Datos');
-  console.log(worksheet)
-  // Definir las columnas en función de las claves del primer objeto en el JSON
-  console.log(resultado)
-  console.log(resultado[0])
-  console.log(resultado[0].result )
-  const arrayKeys = Object.keys(Array.from(resultado[0].result as Array<Pedidos>).map(e => e)[0])
+  const pedidosArray = Array.from(resultado[0].result as Array<Pedidos>);
+  const arrayKeys = Object.keys(pedidosArray.map(e => e)[0])
   console.log(arrayKeys)
-/*   for (const key in resultado[0] as any) {
-    if (Object.hasOwnProperty.call(resultado[0], key)) {
-      columnas.push({ header: key, key: key, width: 15 });
-    }
-  } */
+
   const columnas : any= []
   arrayKeys.map(e => 
     columnas.push({header: e, key:e, width:15}))
   // Agregar las columnas a la hoja de cálculo
   worksheet.columns = columnas
-
-  // Agregar datos al archivo Excel
-  worksheet.addRows([['x1','En envio','12-11-23']]);
+pedidosArray.map(e => 
+  worksheet.addRow(Object.values(e))
+  )
 
   console.log(worksheet)
   // Guardar el archivo Excel

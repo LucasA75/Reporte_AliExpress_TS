@@ -1,15 +1,7 @@
+import { Pedidos } from "./Interface/Pedidos";
+
 //import { exportarExcel } from "./toExcel";
 const elementoInput: HTMLInputElement | null = document.querySelector(".comet-checkbox-group");
-  
-interface Pedidos {
-  fecha?:    string | null;
-  estado?:   string | null;
-  nombre?:   string | null;
-  precio?:   string | null;
-  cantidad?: string | null;
-  url?:     string | null;
-}
-
 
 async function getOrdersAli() {
 console.log("Holis")
