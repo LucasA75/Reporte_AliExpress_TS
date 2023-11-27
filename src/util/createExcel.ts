@@ -9,30 +9,30 @@ export const createExcel = (
   const worksheet = workbook.addWorksheet('Datos');
   const pedidosArray = Array.from(resultado[0].result as Array<Pedidos>);
   const arrayKeys = Object.keys(pedidosArray.map((e) => e)[0]);
-
   const arrayDeValores : Array<any> = []
     pedidosArray.map((e : Pedidos) => {
     const objEdit = {
-      cantidad: Number(e.cantidad.replace('x', '')),
+      cantidad: e.cantidad,
       estado: e.estado,
-      fecha: e.fecha.replace('Pedido efectuado el:', ''),
+      fecha: e.fecha,
       nombre: e.nombre,
-      precio: Number(e.precio.replace(/\D/g, '')),
-      url: e.url.replace('//', ''),
-      urlImagen : e.urlImagen.match(/https:\/\/[^'")]*/)[0].replace("_220x220.jpg","")
+      precioUni: e.precioUni,
+      precioTotal:e.precioTotal,
+      url: e.url,
+      urlImagen : e.urlImagen,
     }
-    table ?
+    table &&
     arrayDeValores.push(Object.values(objEdit))
-    :
-    worksheet.columns =  arrayKeys.map((e) => ({ header: e, key: e, width: 20 }));
-    worksheet.addRow(objEdit).height = 50;
-})
-
+  })
+  worksheet.columns =  arrayKeys.map((e) => ({ header: e, key: e, width: 20 }));
+  pedidosArray.map(e => worksheet.addRow(e).height = 45)
+  
 for(let i = 2; i < pedidosArray.length + 2; i++){
-    const rowData = worksheet.getCell(`G${i}`)
-    rowData.value = {formula: `=IMAGEN("${worksheet.getCell(`G${i}`).value}")`}
+    const rowData = worksheet.getCell(`H${i}`)
+    rowData.value = {formula: `=IMAGEN("${worksheet.getCell(`H${i}`).value}")`}
     rowData.alignment = { vertical: 'middle', horizontal: 'center' }
 }
+
     table &&
     worksheet.addTable({
         name: 'MyTable',
@@ -47,7 +47,7 @@ for(let i = 2; i < pedidosArray.length + 2; i++){
             arrayKeys.map((e) => ({ name: e, totalsRowFunction:'sum', width: 20, filterButton:true}))
         ,
         rows: 
-          arrayDeValores.map((e)=>e) 
+        pedidosArray.map(e => Object.values(e))
         ,
       })
 

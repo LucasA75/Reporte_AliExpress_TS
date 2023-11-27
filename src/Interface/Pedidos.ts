@@ -2,8 +2,9 @@ export interface Pedidos {
   fecha?: string | null;
   estado?: string | null;
   nombre?: string | null;
-  precio?: string | null;
-  cantidad?: string | null;
+  precioUni?: number | null;
+  cantidad?: number | null;
+  precioTotal?: number | null; 
   url?: string | null;
   urlImagen?: string | null;
 }
