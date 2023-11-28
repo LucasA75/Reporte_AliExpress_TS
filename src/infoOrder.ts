@@ -1,4 +1,4 @@
-import { Pedidos } from "./Interface/Pedidos";
+import { Pedidos } from "./Interface/Orders";
 
 //import { exportarExcel } from "./toExcel";
 const elementoInput: HTMLInputElement | null = document.querySelector(".comet-checkbox-group");
