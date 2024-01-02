@@ -1,7 +1,4 @@
-import { Workbook } from 'exceljs';
 import '../styles/popup.scss';
-import { Pedidos } from './Interface/Orders';
-import { getInfoAli } from './util/getInfoAli';
 import { extractBtn } from './util/extractBtn';
 
 let checkboxTable = false

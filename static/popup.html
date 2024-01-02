@@ -10,14 +10,14 @@
 
 <body>
   <div class="container">
-    <h1>Scrapping Aliexpress to Excel</h1>
-
-    <p>Edit <u>static/popup.html</u> to change this page!</p>
-    <label for="table">Formato Tabla
-      <input id="table" type="checkbox" value="true">
+    <h1>Scrapping Orders Aliexpress to Excel</h1>
+    <label for="table">Table format
+      <input class="check-table" id="table" type="checkbox" value="true">
     </label>
-    <button id="btnScraping" class="button" style="margin-top: 2rem;">Start Scrapping</button>
-    <button id="go-to-options" class="button" style="margin-top: 2rem;">Open options page</button>
+    <div class="container-buttons">
+      <button id="btnScraping" class="button" >Start Scrapping</button>
+      <button id="go-to-options" class="button" >Open options page</button>
+    </div>
   </div>
 
   <script src="popup.js"></script>
